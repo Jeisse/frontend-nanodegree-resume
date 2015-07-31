@@ -17,29 +17,38 @@ var work = {
 	"jobs" : [
 		{
 			"employer" : "Xetec LTDa",
-			"position" : "Software Developer",
-			"years" : 2015,
-			"period" : 1.6
+			"title" : "Software Developer",
+			"dates" : "Desember 2013 until now",
+			"location" : "Bray, IE",
+			"description" : 'Some description here'
 		},
 		{
 			"employer" : "Terra.com",
-			"position" : "Web Developer",
-			"years" : 2013,
-			"period" : 1.4
-		}
-	],
-	"trainee" : [
+			"title" : "Web Developer",
+			"dates" : "March 2012 until August 2013",
+			"location" : "Porto Alegre, Brazil",
+			"description" : 'Worked on several teams and different fronts, such as special pages for the London Olympics, and UX CMS migration standardization for Spain, calendar pages of sports, new pages of videos portal Terra.'
+		},
 		{
-		  "employer" : "Cia Salux",
-		  "position" : "Software Developer",
-		  "years" : 2012,
-		  "period" : 1.1
+			"employer" : "Procergs",
+			"title" : "Software Developer",
+			"dates" : "January 2012 until April 2012",
+			"location" : "Porto Alegre, Brazil",
+			"description" : 'Worked with Java EE and Oracle on a ERP.'
+		},
+		{
+			"employer" : "Cia Salux",
+			"title" : "Software Developer",
+			"dates" : "January 2011 until January 2012",
+			"location" : "Porto Alegre, Brazil",
+			"description" : 'Worked with Powerbuilder and Oracle on a ERP for Hospitals.'
 		},
 		{
 			"employer" : "Cia Star4",
-			"position" : "Software Developer",
-			"years" : 2011,
-			"period" : 0.8
+			"title" : "Software Developer",
+			"dates" : "June 2010 until January 2011",
+			"location" : "Taquara, RS, Brazil",
+			"description" : 'Worked with Javascript and Php on a ERP for the footwear market.'
 		}
 	]
 };
@@ -48,14 +57,22 @@ var work = {
 var project ={
 	"projects" : [
 		{
-			"title" : "TerraTv",
-			"dates" : 2013,
-			"description" : "New portal to show all videos related to the..."
+			"title" : "FlexMaint Software",
+			"dates" : 2014,
+			"description" : "A CMMS Software migrated fromn a desktop version to a new web based version.",
+			"image" : "images/flexmaint.png"
 		},
 		{
-			"title" : "Olympic Games, London 2012",
-			"dates" : 2012,
-			"description" : "Olympic Games London 2012 special content for Terra."
+			"title" : "TerraTv",
+			"dates" : 2013,
+			"description" : "New portal to show all videos related to the...",
+			"image" : "images/terratv.jpg"
+		},
+		{
+			"title" : "Easilocks WebSite",
+			"dates" : 2015,
+			"description" : "Easilocks WebSite is to know moe about the brand, purchase products, buy training, find physical stores all over the world and some more functions.",
+			"image" : "images/easilocks.png"
 		}
 	]
 };
@@ -63,24 +80,25 @@ var project ={
 var education = {
 	"schools" : [
 		{
-			"name" : "Front-End Web Developer Nanodeegree",
-			"years" : 0.6,
-			"city" : "Dublin - IE",
-			"dates" : 2015
-		},
-		{
 			"name" : "FATEC - Senac RS",
-			"years" : 4.0,
+			"degree" : "Higher Level",
+			"dates" : "2013",
 			"city" : "Porto Alegre - RS, Brazil",
-			"dates" : 2013
+			"major" : "Ver o que colocar aqui"
 		}
 		],
 	"onlineCourses" : [
 		{
+			"title" : "Front-End Web Developer Nanodeegree",
+			"school" : "Nanodeegree",
+			"dates" : "2015",
+			"url" : "http://"
+		},
+		{
 			"title" : "Learn how to learn",
 			"school" : "Coursera",
 			"dates" : 2015,
-			"url" : ""
+			"url" : "http://"
 		}
 	]
 };
@@ -102,6 +120,71 @@ function setSkillsList(bio){
 	return fomatedSkills;
 }
 
+function setWorkJobs(work, place){
+	
+	for(job in work.jobs ){
+		var workEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var workTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var workDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var workLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		var workDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+		$(place).append(workEmployer);
+		$(place).append(workTitle);
+		$(place).append(workDates);
+		$(place).append(workLocation);
+		$(place).append(workDescription);
+	}
+}
+
+function setProject(project, place){
+	
+	for(proj in project.projects ){
+		var projectTitle = HTMLprojectTitle.replace("%data%", project.projects[proj].title);
+		var projectDates = HTMLprojectDates.replace("%data%", project.projects[proj].dates);
+		var projectDescription = HTMLprojectDescription.replace("%data%", project.projects[proj].description);
+		var projectImage = HTMLprojectImage.replace("%data%", project.projects[proj].image);
+
+		$(place).append( "<div id='proj"+proj+"' class='project'></div>");
+		$("#proj"+proj).append(projectTitle);
+		$("#proj"+proj).append(projectDates);
+		$("#proj"+proj).append(projectDescription);
+		$("#proj"+proj).append(projectImage);
+	}
+}
+
+function setSchools(education, place){
+	
+	for(school in education.schools){
+		var schoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var schoolDegree = HTMLschoolDegree.replace("%data%",  education.schools[school].degree);
+		var schoolDates = HTMLschoolDates.replace("%data%",  education.schools[school].dates);
+		var schoolLocation = HTMLschoolLocation.replace("%data%",  education.schools[school].location);
+		var schoolMajor = HTMLschoolMajor.replace("%data%",  education.schools[school].major);
+ 
+		$(place).append(schoolName);
+		$(place).append(schoolDegree);
+		$(place).append(schoolDates);
+		$(place).append(schoolLocation);
+		$(place).append(schoolMajor);
+	}
+}
+
+function setOnlineCourses(education, place){
+	
+	for(onlineC in education.onlineCourses){
+		var onlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineC].title);
+		var onlineSchool = HTMLonlineSchool.replace("%data%",  education.onlineCourses[onlineC].school);
+		var onlineDates = HTMLonlineDates.replace("%data%",  education.onlineCourses[onlineC].dates);
+		var onlineURL = HTMLonlineURL.replace("%data%",  education.onlineCourses[onlineC].url);
+
+		$(place).append(onlineTitle);
+		$(place).append(onlineSchool);
+		$(place).append(onlineDates);
+		$(place).append(onlineURL);	
+	}
+}
+
 
 var formatedName = HTMLheaderName.replace("%data%", bio.name);
 var formatedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -121,19 +204,30 @@ $("#header").prepend(formatedName);
 
 setBioInformation("#topContacts");
 
-
-
 $("#topContacts").after(HTMLskillsStart);
 $("#skills").append(setSkillsList(bio));
 
-
 $("#topContacts").after(formatedMessage);
-
 
 setBioInformation("#footerContacts");
 
 $(".biopic").addClass("mask-picture");
 
+$("#workExperience").append(HTMLworkStart);
+setWorkJobs(work, ".work-entry");
+
+$("#projects").append(HTMLprojectStart);
+setProject(project, ".project-entry");
+
+$('div.project-entry img').css({'width' : '360px' , 'height' : '207px'});
+
+$("#education").append(HTMLschoolStart);
+setSchools(education, ".education-entry");
+
+
+
+setOnlineCourses(education, ".education-entry");
+$("#education").append(HTMLonlineClasses);
 
 /**
   
