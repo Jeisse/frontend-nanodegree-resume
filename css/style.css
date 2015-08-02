@@ -142,7 +142,7 @@ a {
 }
 
 .center-content {
-  padding: 2.5% 5%;
+  padding: 6% 5% 1% 5%;
 }
 
 ul {
@@ -161,6 +161,7 @@ img {
 
 span {
   padding: 5px;
+  color: #868686;
 }
 
 #lets-connect {
@@ -240,7 +241,46 @@ span {
   transition: all 0.2s ease-in-out 0s;
 }
 
-.project{
+.project {
   float: left;
   width: 33.33%;
 }
+
+.project p {
+  margin-right: 5px;
+}
+
+#wrapper {
+  background: #211D1D; 
+  position: absolute; 
+  width: 100%; 
+  padding-top: 10px; 
+  top: 0; 
+  left: 0;
+}
+
+.container {
+  width: 90.5%; 
+  margin: auto;
+}
+
+nav {
+  padding-top: 15px;
+  float: right; 
+  color: #FFF;
+}
+
+nav ul li {
+  display: inline; 
+  margin-left: 30px;
+}
+
+nav ul li a {
+  display: inline-table;
+  color: #868686;
+}
+
+.logo {
+  float: left;
+}
+
